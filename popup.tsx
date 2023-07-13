@@ -1,8 +1,13 @@
-import { Login } from '@microsoft/mgt-react';
-import { useState } from "react";
+import { fluentButton } from "@fluentui/web-components";
+import { provideFluentDesignSystem } from '@fluentui/web-components';
+
+/**
+ * Provides a design system to the fluent components
+ */
+const designSystem = provideFluentDesignSystem();
+designSystem.register(fluentButton());
 
 function IndexPopup() {
-
   return (
     <div
       style={{
@@ -10,7 +15,14 @@ function IndexPopup() {
         flexDirection: "column",
         padding: 16
       }}>
-        <Login />
+      {/* @ts-ignore ts(2339) */}
+      <fluent-button
+        appearance="neutral"
+        class=" signed-out "
+        aria-label="Sign In"
+        current-value="">
+        Sign In {/* @ts-ignore ts(2339) */}
+      </fluent-button>
     </div>
   )
 }
